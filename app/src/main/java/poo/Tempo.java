@@ -5,32 +5,23 @@ public class Tempo {
 private int hora;
 private int minutos;
 private int segundos;
-private long tempoSegundos;
-private long diferencaSegundos;
 
 
     public Tempo(){
    
     }
     public Tempo(int h){
-    if(h>=0 && h<24){
-        hora=h;        
-        }  
+        this(h,0,0);
     }
     
     public Tempo(int h, int m){
-    if(h>=0 && h<24 && m>=0 &&m<60){
-        hora=h;
-        minutos=m;        
-        }
+        this(h,m,0);
     }
 
     public Tempo(int h,int m,int s){
-    if(h>=0 && h<24 && m>=0 &&m<60 && s>=0 && s<60){
-        hora=h;
-        minutos=m;
-        segundos=s;  
-        }
+        this.alterarHora(h);
+        this.alterarMinutos(m);
+        this.alterarSegundos(s);
     }
 
     public String toString(){
@@ -74,11 +65,11 @@ private long diferencaSegundos;
     }
 
     public long tempoSegundos(){
-        tempoSegundos= (hora*3600)+(minutos*60)+segundos;
+        long tempoSegundos= (hora*3600)+(minutos*60)+segundos;
         return tempoSegundos;
     }
-        public long diferencaSegundos(Tempo T){
-        diferencaSegundos= T.tempoSegundos - tempoSegundos();        
+    public long diferencaSegundos(Tempo t){
+        long diferencaSegundos= t.tempoSegundos() - tempoSegundos();        
         return diferencaSegundos;
     }
 
